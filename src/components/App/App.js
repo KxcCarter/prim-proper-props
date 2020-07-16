@@ -4,13 +4,19 @@ import React, { Component } from 'react';
 import Header from '../Header/Header';
 import PartyLeader from '../PartyLeader/PartyLeader';
 import GuestForm from '../GuestForm/GuestForm';
+import GuestList from '../GuestList/GuestList';
 
 // --- Styles ---
 import './App.css';
 
 class App extends Component {
   state = {
-    guestList: [],
+    guestList: [
+      {
+        name: 'Armando',
+        kidsMeal: 'no',
+      },
+    ],
     newGuest: {
       name: '',
       kidsMeal: 'no',
@@ -51,23 +57,9 @@ class App extends Component {
           handleSubmit={this.handleSubmit}
           value={this.state.newGuest}
         />
-        <h2>Guest List</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Kid's Meal</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.state.guestList.map((guest) => (
-              <tr key={guest.name}>
-                <td>{guest.name}</td>
-                <td>{guest.kidsMeal}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+
+        <GuestList guestList={this.state.guestList} />
+
         <h2>Dinner Supplies</h2>
         <div>Spoons: {this.state.guestList.length * 2}</div>
         <div>Forks: {this.state.guestList.length * 2}</div>
