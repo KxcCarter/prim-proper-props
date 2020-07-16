@@ -5,7 +5,7 @@ class PartyLeader extends Component {
     return (
       <div>
         <h2>Party Leader</h2>
-        {this.props[0] && <h3>{this.props[0].name}</h3>}
+        {this.state.guestList[0] && <h3>{this.state.guestList[0].name}</h3>}
       </div>
     );
   }

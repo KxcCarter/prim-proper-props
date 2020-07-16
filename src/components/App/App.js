@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 
 // --- Components ---
 import Header from '../Header/Header';
-import PartyLeader from '../PartyLeader/PartyLeader';
+import Footer from '../Footer/Footer';
 import GuestForm from '../GuestForm/GuestForm';
 import GuestList from '../GuestList/GuestList';
+import DinnerSupplies from '../DinnerSupplies/DinnerSupplies';
 
 // --- Styles ---
 import './App.css';
@@ -51,7 +52,8 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <PartyLeader guestList={this.state.guestList} />
+        <h2>Party Leader</h2>
+        {this.state.guestList[0] && <h3>{this.state.guestList[0].name}</h3>}
         <GuestForm
           handleChangeFor={this.handleChangeFor}
           handleSubmit={this.handleSubmit}
@@ -59,15 +61,8 @@ class App extends Component {
         />
 
         <GuestList guestList={this.state.guestList} />
-
-        <h2>Dinner Supplies</h2>
-        <div>Spoons: {this.state.guestList.length * 2}</div>
-        <div>Forks: {this.state.guestList.length * 2}</div>
-        <div>Knives: {this.state.guestList.length * 2}</div>
-        <footer>
-          <h3>Have fun!</h3>
-          <p>Don't forget to mind your Ps and Qs!</p>
-        </footer>
+        <DinnerSupplies guestList={this.state.guestList.length} />
+        <Footer />
       </div>
     );
   }
